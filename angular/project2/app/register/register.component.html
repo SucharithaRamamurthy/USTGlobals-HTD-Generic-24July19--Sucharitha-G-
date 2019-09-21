@@ -1,0 +1,37 @@
+<div class="col-md-4 offset-md-4 mt-5 card card-body">
+    <div class=" container card col-md-6-mt-2 offset-3">
+        <form action=""method="POST" role="form" [formGroup]='registerForm' (ngSubmit)='printForm(registerForm)'>
+            
+            <div class="form-group">
+                <label for="username">username</label>
+                <input type="text" name='name' id="name" formControlName='name'>
+                <div *ngIf='name.touched && name.invalid'>
+                    <div class="alert alert-danger"
+                    *ngIf= 'name.errors.minlength'>minimum length of this field is 3</div>
+    
+                    </div>
+                </div>
+                <div class="form-group"> 
+                     <label for="password">password</label>
+                     <input type="text" name='password' id="password" formControlName='password'>
+                     <div class="alert alert-danger"
+                     *ngIf='password.errors.password'>minimum length of this field is 5</div>
+                     </div>
+                     <div class="form-group">
+                             <label for="emailid">emailid</label>
+                             <input type="emailid" name="email" id="email" formControlName ='email'>
+                             <div class="alert alert-danger"
+                             *ngIf='emailid.errors.emailid'>this field should contain emailid</div>
+                             </div>
+                             <div class="form-group">
+                                     <label for="mobilenumber">mobilenumber</label>
+                                     <input type="text" class="form-control" id="mobilenumber" placeholder="enter number">
+                                     </div>
+                                     <div>
+                                     <button type="submit" class="btn btn-success">submit</button>
+                                     <button type="reset" class="btn btn-info ">reset</button>
+                                     <button type="cancel" class="btn btn-danger">cancel</button>
+                                    </div>
+                                    </form>
+                                    </div>
+         </div>

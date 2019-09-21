@@ -1,0 +1,11 @@
+<div class="col-md-4  float-right">
+        <div class="">
+    <div *ngFor = 'let e of entertainmentNews'>
+        <a class ="card card-body" href="{{e.url}}"><img src="{{e.urlToImage}}" alt=""></a>
+        <h3>{{e.title}}</h3>
+        <a class="btn btn-primary" href="{{e.url}}">For more Details.....!!</a>
+        </div>
+       
+    
+        </div>
+    </div>

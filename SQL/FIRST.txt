@@ -1,0 +1,76 @@
+1.show databases;
+2.use database;
+3.show tables;
+  create table student(name varchar(120),city varchar(120),id int).
+4.select *student_info
+5.update student_info  set classname=10;
+6.delete from student_info;
+7.insert into student_info values('rahul','pune',9),('raji', 'hyb',10),('hjnx','jHB',6),('hjnbc','jhjsn',7),('papu','chittor',8);
+8.truncate table student_info;
+9.select studentName,address from student_info; //projection
+
++-------------+---------+
+| studentName | address |
++-------------+---------+
+| rahul       | pune    |
+| raji        | hyb     |
+| hjnx        | jHB     |
+| hjnbc       | jhjsn   |
+| papu        | chittor |
++-------------+---------+
+10.select studentName from student_info where studentName='rahul';
++-------------+
+| studentName |
++-------------+
+| rahul       |
++-------------+
+11. select studentName,address from student_info where studentName='rahul';
++-------------+---------+
+| studentName | address |
++-------------+---------+
+| rahul       | pune    |
++-------------+---------+
+12. delete from student_info where studentName='rahul';
+Query OK, 1 row affected (0.17 sec)
+
+mysql> select * from student_info;
++-------------+---------+-----------+
+| studentName | address | classname |
++-------------+---------+-----------+
+| raji        | hyb     |        10 |
+| hjnx        | jHB     |         6 |
+| hjnbc       | jhjsn   |         7 |
+| papu        | chittor |         8 |
++-------------+---------+-----------+
+13. select * from student_info;
++-------------+---------+-----------+
+| studentName | address | classname |
++-------------+---------+-----------+
+| raji        | hyb     |        10 |
+| hjnx        | jHB     |         6 |
+| hjnbc       | jhjsn   |         7 |
+| papu        | chittor |         8 |
++-------------+---------+-----------+
+4 rows in set (0.00 sec)
+
+mysql> update student_info set classname=67 where studentName='raji';
+Query OK, 1 row affected (0.06 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from student_info;
++-------------+---------+-----------+
+| studentName | address | classname |
++-------------+---------+-----------+
+| raji        | hyb     |        67 |
+| hjnx        | jHB     |         6 |
+| hjnbc       | jhjsn   |         7 |
+| papu        | chittor |         8 |
++-------------+---------+-----------+
+14. desc student_info;
++-------------+--------------+------+-----+---------+-------+
+| Field       | Type         | Null | Key | Default | Extra |
++-------------+--------------+------+-----+---------+-------+
+| studentName | varchar(120) | YES  |     | NULL    |       |
+| address     | varchar(120) | YES  |     | NULL    |       |
+| classname   | int(11)      | YES  |     | NULL    |       |
++-------------+--------------+------+-----+---------+-------+

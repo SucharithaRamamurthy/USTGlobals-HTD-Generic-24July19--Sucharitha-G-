@@ -1,0 +1,45 @@
+mysql> create table employee_info(id int,name varchar(120) not null,email varchar(120),
+designation varchar(120),mobileNo int, age int,DOB date not null,DOJ date,
+salary double,DeptID int,BloodGroup varchar(120),primary key(id));
+Query OK, 0 rows affected (0.38 sec)
+
+mysql> desc employee_info;
++-------------+--------------+------+-----+---------+-------+
+| Field       | Type         | Null | Key | Default | Extra |
++-------------+--------------+------+-----+---------+-------+
+| id          | int(11)      | NO   | PRI | NULL    |       |
+| name        | varchar(120) | NO   |     | NULL    |       |
+| email       | varchar(120) | YES  |     | NULL    |       |
+| designation | varchar(120) | YES  |     | NULL    |       |
+| mobileNo    | int(11)      | YES  |     | NULL    |       |
+| age         | int(11)      | YES  |     | NULL    |       |
+| DOB         | int(11)      | NO   |     | NULL    |       |
+| DOJ         | int(11)      | YES  |     | NULL    |       |
+| salary      | double       | YES  |     | NULL    |       |
+| DeptID      | int(11)      | YES  |     | NULL    |       |
+| BloodGroup  | varchar(120) | YES  |     | NULL    |       |
++-------------+--------------+------+-----+---------+-------+
+11 rows in set (0.14 sec)
+
+
+
+mysql> select * from employee_info;
++----+-----------+---------------------+-------------+----------+------+------------+------------+--------------+--------+-------------+
+| id | name      | email               | designation | mobileNo | age  | DOB        | DOJ        | salary       | DeptID | BloodGroup  |
++----+-----------+---------------------+-------------+----------+------+------------+------------+--------------+--------+-------------+
+|  1 | suchi     | suchi@gmail.com     | developer   | 94925577 |   22 | 1997-01-12 | 2019-08-24 |    28000.123 |     10 | O positive  |
+|  2 | Hema      | hema@gmail.com      | HR          |  9492897 |   22 | 1998-09-12 | 2019-09-29 |   279068.123 |     10 | O positive  |
+|  3 | Bhanu     | bhanu@gmail.com     | tester      | 56792897 |   27 | 1995-09-12 | 2015-09-29 |    37906.123 |     30 | B positive  |
+|  4 | Harshitha | harshitha@gmail.com | tester      | 86796597 |   24 | 1996-09-12 | 2017-09-29 |    37566.123 |     30 | AB positive |
+|  5 | Gopala    | gopal@gmail.com     | sales       | 97796597 |   24 | 1995-11-10 | 2016-09-29 |    17566.123 |     20 | A positive  |
+|  6 | jon       | jon@gmail.com       | sales       | 77965097 |   28 | 1990-03-10 | 2015-12-01 |    89966.123 |     20 | O positive  |
+|  7 | Raj       | raji@gmail.com      | HR          | 97855097 |   24 | 1994-11-30 | 2015-12-01 |    60066.123 |     40 | B positive  |
+|  8 | Jack      | jack@gmail.com      | Tester      | 98498033 |   22 | 1996-12-06 | 2018-11-01 |     4500.986 |     40 | O positive  |
+|  9 | Jill      | jill@gmail.com      | Developer   | 88598023 |   23 | 1995-02-07 | 2017-11-01 |    84367.986 |     10 | O negitive  |
+| 10 | Rohith    | rohith@gmail.com    | sales       | 98589032 |   24 | 1994-03-07 | 2016-11-01 |   34367.4566 |     10 | B negitive  |
+| 11 | Anupama   | Anu@gmail.com       | HR          |  9788862 |   25 | 1993-08-08 | 2015-10-12 | 22890.889874 |     10 | A negitive  |
+| 12 | Ram       | ram@gmail.com       | Developer   |  7799962 |   26 | 1992-08-09 | 2014-12-13 |   55000.9874 |     30 | AB positive |
+| 13 | Ravi      | ravi@gmail.com      | sales       |  9675432 |   27 | 1991-10-08 | 2013-10-17 |    23400.774 |     40 | B positive  |
+| 14 | sandhya   | sandhya@gmail.com   | sales       |  8675332 |   27 | 1991-11-09 | 2013-10-17 |    22400.774 |     30 | A positive  |
+| 15 | Kavya     | kavya@gmail.com     | Developer   |  7765332 |   28 | 1991-01-28 | 2013-11-16 |    99000.774 |     20 | O negitive  |
++----+-----------+---------------------+-------------+----------+------+------------+------------+--------------+--------+-------------+

@@ -1,0 +1,540 @@
+1.write  a query to display all the records of employee table whose salary is equal to 
+10,000 and designation is developer?
+ select * from employee_info where designation='Developer' and salary=10000;
+Empty set (0.31 sec)
+
+ select * from employee_info where designation='Developer' or salary=10000;
++----+-------+-----------------+-------------+----------+------+------------+------------+------------+--------+-------------+
+| id | name  | email           | designation | mobileNo | age  | DOB        | DOJ        | salary     | DeptID | BloodGroup  |
++----+-------+-----------------+-------------+----------+------+------------+------------+------------+--------+-------------+
+|  1 | suchi | suchi@gmail.com | developer   | 94925577 |   22 | 1997-01-12 | 2019-08-24 |  28000.123 |     10 | O positive  |
+|  9 | Jill  | jill@gmail.com  | Developer   | 88598023 |   23 | 1995-02-07 | 2017-11-01 |  84367.986 |     10 | O negitive  |
+| 12 | Ram   | ram@gmail.com   | Developer   |  7799962 |   26 | 1992-08-09 | 2014-12-13 | 55000.9874 |     30 | AB positive |
+| 15 | Kavya | kavya@gmail.com | Developer   |  7765332 |   28 | 1991-01-28 | 2013-11-16 |  99000.774 |     20 | O negitive  |
++----+-------+-----------------+-------------+----------+------+------------+------------+------------+--------+-------------+
+
+ 
+2.write a query to display all the records of employee whose  is working in dept no 20 or 60?
+ select * from employee_info where DeptID=20 or DeptId=60;
++----+--------+-----------------+-------------+----------+------+------------+------------+-----------+--------+------------+
+| id | name   | email           | designation | mobileNo | age  | DOB        | DOJ        | salary    | DeptID | BloodGroup |
++----+--------+-----------------+-------------+----------+------+------------+------------+-----------+--------+------------+
+|  5 | Gopala | gopal@gmail.com | sales       | 97796597 |   24 | 1995-11-10 | 2016-09-29 | 17566.123 |     20 | A positive |
+|  6 | jon    | jon@gmail.com   | sales       | 77965097 |   28 | 1990-03-10 | 2015-12-01 | 89966.123 |     20 | O positive |
+| 15 | Kavya  | kavya@gmail.com | Developer   |  7765332 |   28 | 1991-01-28 | 2013-11-16 | 99000.774 |     20 | O negitive |
++----+--------+-----------------+-------------+----------+------+------------+------------+-----------+--------+------------+
+
+
+
+3.write a query to display name salary, emailId whose is working as a tester or age>21?
+
+
+ select name,email,salary from employee_info  where designation='tester' or age>21;
++-----------+---------------------+--------------+
+| name      | email               | salary       |
++-----------+---------------------+--------------+
+| suchi     | suchi@gmail.com     |    28000.123 |
+| Hema      | hema@gmail.com      |   279068.123 |
+| Bhanu     | bhanu@gmail.com     |    37906.123 |
+| Harshitha | harshitha@gmail.com |    37566.123 |
+| Gopala    | gopal@gmail.com     |    17566.123 |
+| jon       | jon@gmail.com       |    89966.123 |
+| Raj       | raji@gmail.com      |    60066.123 |
+| Jack      | jack@gmail.com      |     4500.986 |
+| Jill      | jill@gmail.com      |    84367.986 |
+| Rohith    | rohith@gmail.com    |   34367.4566 |
+| Anupama   | Anu@gmail.com       | 22890.889874 |
+| Ram       | ram@gmail.com       |   55000.9874 |
+| Ravi      | ravi@gmail.com      |    23400.774 |
+| sandhya   | sandhya@gmail.com   |    22400.774 |
+| Kavya     | kavya@gmail.com     |    99000.774 |
++-----------+---------------------+--------------+
+15 rows in set (0.11 sec)
+ ==================AND=======================
+mysql> select name,email,salary from employee_info  where designation='tester' and age>21;
++-----------+---------------------+-----------+
+| name      | email               | salary    |
++-----------+---------------------+-----------+
+| Bhanu     | bhanu@gmail.com     | 37906.123 |
+| Harshitha | harshitha@gmail.com | 37566.123 |
+| Jack      | jack@gmail.com      |  4500.986 |
++-----------+---------------------+-----------+
+
+
+4.write a query to display the name who is working as a HR  in deptID=20 or who is working as
+ a clerk where salary is>10000?
+ select name from employee_info where designation='HR' and DeptID=20 or designation='clerk' and salary>10000;
+Empty set (0.00 sec)
+
+
+5.write a query to display salary=10000 and designation is sales ?
+  select * from employee_info where salary=10000 and  designation='sales';
+Empty set (0.00 sec)
+
+
+6. write a query to display excluding DptID=10?
+select *from employee_info where not DeptID=20;
++----+-----------+---------------------+-------------+----------+------+------------+------------+--------------+--------+-------------+
+| id | name      | email               | designation | mobileNo | age  | DOB        | DOJ        | salary       | DeptID | BloodGroup  |
++----+-----------+---------------------+-------------+----------+------+------------+------------+--------------+--------+-------------+
+|  1 | suchi     | suchi@gmail.com     | developer   | 94925577 |   22 | 1997-01-12 | 2019-08-24 |    28000.123 |     10 | O positive  |
+|  2 | Hema      | hema@gmail.com      | HR          |  9492897 |   22 | 1998-09-12 | 2019-09-29 |   279068.123 |     10 | O positive  |
+|  3 | Bhanu     | bhanu@gmail.com     | tester      | 56792897 |   27 | 1995-09-12 | 2015-09-29 |    37906.123 |     30 | B positive  |
+|  4 | Harshitha | harshitha@gmail.com | tester      | 86796597 |   24 | 1996-09-12 | 2017-09-29 |    37566.123 |     30 | AB positive |
+|  7 | Raj       | raji@gmail.com      | HR          | 97855097 |   24 | 1994-11-30 | 2015-12-01 |    60066.123 |     40 | B positive  |
+|  8 | Jack      | jack@gmail.com      | Tester      | 98498033 |   22 | 1996-12-06 | 2018-11-01 |     4500.986 |     40 | O positive  |
+|  9 | Jill      | jill@gmail.com      | Developer   | 88598023 |   23 | 1995-02-07 | 2017-11-01 |    84367.986 |     10 | O negitive  |
+| 10 | Rohith    | rohith@gmail.com    | sales       | 98589032 |   24 | 1994-03-07 | 2016-11-01 |   34367.4566 |     10 | B negitive  |
+| 11 | Anupama   | Anu@gmail.com       | HR          |  9788862 |   25 | 1993-08-08 | 2015-10-12 | 22890.889874 |     10 | A negitive  |
+| 12 | Ram       | ram@gmail.com       | Developer   |  7799962 |   26 | 1992-08-09 | 2014-12-13 |   55000.9874 |     30 | AB positive |
+| 13 | Ravi      | ravi@gmail.com      | sales       |  9675432 |   27 | 1991-10-08 | 2013-10-17 |    23400.774 |     40 | B positive  |
+| 14 | sandhya   | sandhya@gmail.com   | sales       |  8675332 |   27 | 1991-11-09 | 2013-10-17 |    22400.774 |     30 | A positive  |
++----+-----------+---------------------+-------------+----------+------+------------+------------+--------------+--------+-------------+
+
+7.write a query to display all the employee excluding DeptID 20 or 30?
+ select *from employee_info where not (DeptID=30 or DeptID=20);
++----+---------+------------------+-------------+----------+------+------------+------------+--------------+--------+------------+
+| id | name    | email            | designation | mobileNo | age  | DOB        | DOJ        | salary       | DeptID | BloodGroup |
++----+---------+------------------+-------------+----------+------+------------+------------+--------------+--------+------------+
+|  1 | suchi   | suchi@gmail.com  | developer   | 94925577 |   22 | 1997-01-12 | 2019-08-24 |    28000.123 |     10 | O positive |
+|  2 | Hema    | hema@gmail.com   | HR          |  9492897 |   22 | 1998-09-12 | 2019-09-29 |   279068.123 |     10 | O positive |
+|  7 | Raj     | raji@gmail.com   | HR          | 97855097 |   24 | 1994-11-30 | 2015-12-01 |    60066.123 |     40 | B positive |
+|  8 | Jack    | jack@gmail.com   | Tester      | 98498033 |   22 | 1996-12-06 | 2018-11-01 |     4500.986 |     40 | O positive |
+|  9 | Jill    | jill@gmail.com   | Developer   | 88598023 |   23 | 1995-02-07 | 2017-11-01 |    84367.986 |     10 | O negitive |
+| 10 | Rohith  | rohith@gmail.com | sales       | 98589032 |   24 | 1994-03-07 | 2016-11-01 |   34367.4566 |     10 | B negitive |
+| 11 | Anupama | Anu@gmail.com    | HR          |  9788862 |   25 | 1993-08-08 | 2015-10-12 | 22890.889874 |     10 | A negitive |
+| 13 | Ravi    | ravi@gmail.com   | sales       |  9675432 |   27 | 1991-10-08 | 2013-10-17 |    23400.774 |     40 | B positive |
++----+---------+------------------+-------------+----------+------+------------+------------+--------------+--------+------------+
+
+
+
+8.write a query  to display all the employee deatiles  excluding sales who all are working in deptID=20?
+
+select * from employee_info where not (designation='sales' and DeptID=20);
++----+-----------+---------------------+-------------+----------+------+------------+------------+--------------+--------+-------------+
+| id | name      | email               | designation | mobileNo | age  | DOB        | DOJ        | salary       | DeptID | BloodGroup  |
++----+-----------+---------------------+-------------+----------+------+------------+------------+--------------+--------+-------------+
+|  1 | suchi     | suchi@gmail.com     | developer   | 94925577 |   22 | 1997-01-12 | 2019-08-24 |    28000.123 |     10 | O positive  |
+|  2 | Hema      | hema@gmail.com      | HR          |  9492897 |   22 | 1998-09-12 | 2019-09-29 |   279068.123 |     10 | O positive  |
+|  3 | Bhanu     | bhanu@gmail.com     | tester      | 56792897 |   27 | 1995-09-12 | 2015-09-29 |    37906.123 |     30 | B positive  |
+|  4 | Harshitha | harshitha@gmail.com | tester      | 86796597 |   24 | 1996-09-12 | 2017-09-29 |    37566.123 |     30 | AB positive |
+|  7 | Raj       | raji@gmail.com      | HR          | 97855097 |   24 | 1994-11-30 | 2015-12-01 |    60066.123 |     40 | B positive  |
+|  8 | Jack      | jack@gmail.com      | Tester      | 98498033 |   22 | 1996-12-06 | 2018-11-01 |     4500.986 |     40 | O positive  |
+|  9 | Jill      | jill@gmail.com      | Developer   | 88598023 |   23 | 1995-02-07 | 2017-11-01 |    84367.986 |     10 | O negitive  |
+| 10 | Rohith    | rohith@gmail.com    | sales       | 98589032 |   24 | 1994-03-07 | 2016-11-01 |   34367.4566 |     10 | B negitive  |
+| 11 | Anupama   | Anu@gmail.com       | HR          |  9788862 |   25 | 1993-08-08 | 2015-10-12 | 22890.889874 |     10 | A negitive  |
+| 12 | Ram       | ram@gmail.com       | Developer   |  7799962 |   26 | 1992-08-09 | 2014-12-13 |   55000.9874 |     30 | AB positive |
+| 13 | Ravi      | ravi@gmail.com      | sales       |  9675432 |   27 | 1991-10-08 | 2013-10-17 |    23400.774 |     40 | B positive  |
+| 14 | sandhya   | sandhya@gmail.com   | sales       |  8675332 |   27 | 1991-11-09 | 2013-10-17 |    22400.774 |     30 | A positive  |
+| 15 | Kavya     | kavya@gmail.com     | Developer   |  7765332 |   28 | 1991-01-28 | 2013-11-16 |    99000.774 |     20 | O negitive  |
++----+-----------+---------------------+-------------+----------+------+------------+------------+--------------+--------+-------------+
+
+
+9.write a query to display all employee details whose is working as sales  for deptID=20 or 30?
+
+
+ select * from employee_info where not (designation='sales' and (DeptID=20 or DeptID=30));
++----+-----------+---------------------+-------------+----------+------+------------+------------+--------------+--------+-------------+
+| id | name      | email               | designation | mobileNo | age  | DOB        | DOJ        | salary       | DeptID | BloodGroup  |
++----+-----------+---------------------+-------------+----------+------+------------+------------+--------------+--------+-------------+
+|  1 | suchi     | suchi@gmail.com     | developer   | 94925577 |   22 | 1997-01-12 | 2019-08-24 |    28000.123 |     10 | O positive  |
+|  2 | Hema      | hema@gmail.com      | HR          |  9492897 |   22 | 1998-09-12 | 2019-09-29 |   279068.123 |     10 | O positive  |
+|  3 | Bhanu     | bhanu@gmail.com     | tester      | 56792897 |   27 | 1995-09-12 | 2015-09-29 |    37906.123 |     30 | B positive  |
+|  4 | Harshitha | harshitha@gmail.com | tester      | 86796597 |   24 | 1996-09-12 | 2017-09-29 |    37566.123 |     30 | AB positive |
+|  7 | Raj       | raji@gmail.com      | HR          | 97855097 |   24 | 1994-11-30 | 2015-12-01 |    60066.123 |     40 | B positive  |
+|  8 | Jack      | jack@gmail.com      | Tester      | 98498033 |   22 | 1996-12-06 | 2018-11-01 |     4500.986 |     40 | O positive  |
+|  9 | Jill      | jill@gmail.com      | Developer   | 88598023 |   23 | 1995-02-07 | 2017-11-01 |    84367.986 |     10 | O negitive  |
+| 10 | Rohith    | rohith@gmail.com    | sales       | 98589032 |   24 | 1994-03-07 | 2016-11-01 |   34367.4566 |     10 | B negitive  |
+| 11 | Anupama   | Anu@gmail.com       | HR          |  9788862 |   25 | 1993-08-08 | 2015-10-12 | 22890.889874 |     10 | A negitive  |
+| 12 | Ram       | ram@gmail.com       | Developer   |  7799962 |   26 | 1992-08-09 | 2014-12-13 |   55000.9874 |     30 | AB positive |
+| 13 | Ravi      | ravi@gmail.com      | sales       |  9675432 |   27 | 1991-10-08 | 2013-10-17 |    23400.774 |     40 | B positive  |
+| 15 | Kavya     | kavya@gmail.com     | Developer   |  7765332 |   28 | 1991-01-28 | 2013-11-16 |    99000.774 |     20 | O negitive  |
++----+-----------+---------------------+-------------+----------+------+------------+------------+--------------+--------+-------------+
+
+
+10.write a query to display all the employee whoes is working in depetID=10 only if there salary>10000 and <25000 including 10000 and 25000?
+
+ select * from employee_info where  DeptID=10 and (salary>=10000 and salary<=25000);
++----+---------+---------------+-------------+----------+------+------------+------------+--------------+--------+------------+
+| id | name    | email         | designation | mobileNo | age  | DOB        | DOJ        | salary       | DeptID | BloodGroup |
++----+---------+---------------+-------------+----------+------+------------+------------+--------------+--------+------------+
+| 11 | Anupama | Anu@gmail.com | HR          |  9788862 |   25 | 1993-08-08 | 2015-10-12 | 22890.889874 |     10 | A negitive |
++----+---------+---------------+-------------+----------+------+------------+------------+--------------+--------+------------+
+
+
+11. write a query to display all the records who is working as a developer and dob in 1994?
+
+
+
+
+
+12. write a query to display the employee working in DeptID 10/20/30?
+
+ select * from employee_info where DeptID=10 or DeptID=20 or DeptID=30
+    -> ;4
++----+-----------+---------------------+-------------+----------+------+------------+------------+--------------+--------+-------------+
+| id | name      | email               | designation | mobileNo | age  | DOB        | DOJ        | salary       | DeptID | BloodGroup  |
++----+-----------+---------------------+-------------+----------+------+------------+------------+--------------+--------+-------------+
+|  1 | suchi     | suchi@gmail.com     | developer   | 94925577 |   22 | 1997-01-12 | 2019-08-24 |    28000.123 |     10 | O positive  |
+|  2 | Hema      | hema@gmail.com      | HR          |  9492897 |   22 | 1998-09-12 | 2019-09-29 |   279068.123 |     10 | O positive  |
+|  3 | Bhanu     | bhanu@gmail.com     | tester      | 56792897 |   27 | 1995-09-12 | 2015-09-29 |    37906.123 |     30 | B positive  |
+|  4 | Harshitha | harshitha@gmail.com | tester      | 86796597 |   24 | 1996-09-12 | 2017-09-29 |    37566.123 |     30 | AB positive |
+|  5 | Gopala    | gopal@gmail.com     | sales       | 97796597 |   24 | 1995-11-10 | 2016-09-29 |    17566.123 |     20 | A positive  |
+|  6 | jon       | jon@gmail.com       | sales       | 77965097 |   28 | 1990-03-10 | 2015-12-01 |    89966.123 |     20 | O positive  |
+|  9 | Jill      | jill@gmail.com      | Developer   | 88598023 |   23 | 1995-02-07 | 2017-11-01 |    84367.986 |     10 | O negitive  |
+| 10 | Rohith    | rohith@gmail.com    | sales       | 98589032 |   24 | 1994-03-07 | 2016-11-01 |   34367.4566 |     10 | B negitive  |
+| 11 | Anupama   | Anu@gmail.com       | HR          |  9788862 |   25 | 1993-08-08 | 2015-10-12 | 22890.889874 |     10 | A negitive  |
+| 12 | Ram       | ram@gmail.com       | Developer   |  7799962 |   26 | 1992-08-09 | 2014-12-13 |   55000.9874 |     30 | AB positive |
+| 14 | sandhya   | sandhya@gmail.com   | sales       |  8675332 |   27 | 1991-11-09 | 2013-10-17 |    22400.774 |     30 | A positive  |
+| 15 | Kavya     | kavya@gmail.com     | Developer   |  7765332 |   28 | 1991-01-28 | 2013-11-16 |    99000.774 |     20 | O negitive  |
++----+-----------+---------------------+-------------+----------+------+------------+------------+--------------+--------+-------------+
+         
+===================================IN======================================================
+ select * from employee_info where DeptID IN(10,20,30);
++----+-----------+---------------------+-------------+----------+------+------------+------------+--------------+--------+-------------+
+| id | name      | email               | designation | mobileNo | age  | DOB        | DOJ        | salary       | DeptID | BloodGroup  |
++----+-----------+---------------------+-------------+----------+------+------------+------------+--------------+--------+-------------+
+|  1 | suchi     | suchi@gmail.com     | developer   | 94925577 |   22 | 1997-01-12 | 2019-08-24 |    28000.123 |     10 | O positive  |
+|  2 | Hema      | hema@gmail.com      | HR          |  9492897 |   22 | 1998-09-12 | 2019-09-29 |   279068.123 |     10 | O positive  |
+|  3 | Bhanu     | bhanu@gmail.com     | tester      | 56792897 |   27 | 1995-09-12 | 2015-09-29 |    37906.123 |     30 | B positive  |
+|  4 | Harshitha | harshitha@gmail.com | tester      | 86796597 |   24 | 1996-09-12 | 2017-09-29 |    37566.123 |     30 | AB positive |
+|  5 | Gopala    | gopal@gmail.com     | sales       | 97796597 |   24 | 1995-11-10 | 2016-09-29 |    17566.123 |     20 | A positive  |
+|  6 | jon       | jon@gmail.com       | sales       | 77965097 |   28 | 1990-03-10 | 2015-12-01 |    89966.123 |     20 | O positive  |
+|  9 | Jill      | jill@gmail.com      | Developer   | 88598023 |   23 | 1995-02-07 | 2017-11-01 |    84367.986 |     10 | O negitive  |
+| 10 | Rohith    | rohith@gmail.com    | sales       | 98589032 |   24 | 1994-03-07 | 2016-11-01 |   34367.4566 |     10 | B negitive  |
+| 11 | Anupama   | Anu@gmail.com       | HR          |  9788862 |   25 | 1993-08-08 | 2015-10-12 | 22890.889874 |     10 | A negitive  |
+| 12 | Ram       | ram@gmail.com       | Developer   |  7799962 |   26 | 1992-08-09 | 2014-12-13 |   55000.9874 |     30 | AB positive |
+| 14 | sandhya   | sandhya@gmail.com   | sales       |  8675332 |   27 | 1991-11-09 | 2013-10-17 |    22400.774 |     30 | A positive  |
+| 15 | Kavya     | kavya@gmail.com     | Developer   |  7765332 |   28 | 1991-01-28 | 2013-11-16 |    99000.774 |     20 | O negitive  |
++----+-----------+---------------------+-------------+----------+------+------------+------------+--------------+--------+-------------+
+12 rows in set (0.00 sec)
+
+
+13.write a query to display all the employee details whose job designation is tester,hr and sales?
+
+ select * from employee_info where designation in('tester','sales','Developer');
++----+-----------+---------------------+-------------+----------+------+------------+------------+------------+--------+-------------+
+| id | name      | email               | designation | mobileNo | age  | DOB        | DOJ        | salary     | DeptID | BloodGroup  |
++----+-----------+---------------------+-------------+----------+------+------------+------------+------------+--------+-------------+
+|  1 | suchi     | suchi@gmail.com     | developer   | 94925577 |   22 | 1997-01-12 | 2019-08-24 |  28000.123 |     10 | O positive  |
+|  3 | Bhanu     | bhanu@gmail.com     | tester      | 56792897 |   27 | 1995-09-12 | 2015-09-29 |  37906.123 |     30 | B positive  |
+|  4 | Harshitha | harshitha@gmail.com | tester      | 86796597 |   24 | 1996-09-12 | 2017-09-29 |  37566.123 |     30 | AB positive |
+|  5 | Gopala    | gopal@gmail.com     | sales       | 97796597 |   24 | 1995-11-10 | 2016-09-29 |  17566.123 |     20 | A positive  |
+|  6 | jon       | jon@gmail.com       | sales       | 77965097 |   28 | 1990-03-10 | 2015-12-01 |  89966.123 |     20 | O positive  |
+|  8 | Jack      | jack@gmail.com      | Tester      | 98498033 |   22 | 1996-12-06 | 2018-11-01 |   4500.986 |     40 | O positive  |
+|  9 | Jill      | jill@gmail.com      | Developer   | 88598023 |   23 | 1995-02-07 | 2017-11-01 |  84367.986 |     10 | O negitive  |
+| 10 | Rohith    | rohith@gmail.com    | sales       | 98589032 |   24 | 1994-03-07 | 2016-11-01 | 34367.4566 |     10 | B negitive  |
+| 12 | Ram       | ram@gmail.com       | Developer   |  7799962 |   26 | 1992-08-09 | 2014-12-13 | 55000.9874 |     30 | AB positive |
+| 13 | Ravi      | ravi@gmail.com      | sales       |  9675432 |   27 | 1991-10-08 | 2013-10-17 |  23400.774 |     40 | B positive  |
+| 14 | sandhya   | sandhya@gmail.com   | sales       |  8675332 |   27 | 1991-11-09 | 2013-10-17 |  22400.774 |     30 | A positive  |
+| 15 | Kavya     | kavya@gmail.com     | Developer   |  7765332 |   28 | 1991-01-28 | 2013-11-16 |  99000.774 |     20 | O negitive  |
++----+-----------+---------------------+-------------+----------+------+------------+------------+------------+--------+-------------+
+
+
+14.wite a query to display all the employee details who are working as a sales in deptID 20,30,40,60,70?
+
+ select * from employee_info where designation='sales' and DeptID in(20,30,40,60,70);
++----+---------+-------------------+-------------+----------+------+------------+------------+-----------+--------+------------+
+| id | name    | email             | designation | mobileNo | age  | DOB        | DOJ        | salary    | DeptID | BloodGroup |
++----+---------+-------------------+-------------+----------+------+------------+------------+-----------+--------+------------+
+|  5 | Gopala  | gopal@gmail.com   | sales       | 97796597 |   24 | 1995-11-10 | 2016-09-29 | 17566.123 |     20 | A positive |
+|  6 | jon     | jon@gmail.com     | sales       | 77965097 |   28 | 1990-03-10 | 2015-12-01 | 89966.123 |     20 | O positive |
+| 13 | Ravi    | ravi@gmail.com    | sales       |  9675432 |   27 | 1991-10-08 | 2013-10-17 | 23400.774 |     40 | B positive |
+| 14 | sandhya | sandhya@gmail.com | sales       |  8675332 |   27 | 1991-11-09 | 2013-10-17 | 22400.774 |     30 | A positive |
++----+---------+-------------------+-------------+----------+------+------------+------------+-----------+--------+------------+
+4 rows in set (0.00 sec)
+
+
+15.wite a query to display all the employee details excluding who are working as a sales in deptID 20,30,40,60,70?
+ select * from employee_info where designation='sales' and DeptID not in(20,30,40,60,70);
++----+--------+------------------+-------------+----------+------+------------+------------+------------+--------+------------+
+| id | name   | email            | designation | mobileNo | age  | DOB        | DOJ        | salary     | DeptID | BloodGroup |
++----+--------+------------------+-------------+----------+------+------------+------------+------------+--------+------------+
+| 10 | Rohith | rohith@gmail.com | sales       | 98589032 |   24 | 1994-03-07 | 2016-11-01 | 34367.4566 |     10 | B negitive |
++----+--------+------------------+-------------+----------+------+------------+------------+------------+--------+------------+
+
+16.write a query to display all the details who are working in 20,40,30 excluding sales or hr?
+
+ select * from employee_info where DeptID in(20,30,40) and designation not in('sales','HR');
++----+-----------+---------------------+-------------+----------+------+------------+------------+------------+--------+-------------+
+| id | name      | email               | designation | mobileNo | age  | DOB        | DOJ        | salary     | DeptID | BloodGroup  |
++----+-----------+---------------------+-------------+----------+------+------------+------------+------------+--------+-------------+
+|  3 | Bhanu     | bhanu@gmail.com     | tester      | 56792897 |   27 | 1995-09-12 | 2015-09-29 |  37906.123 |     30 | B positive  |
+|  4 | Harshitha | harshitha@gmail.com | tester      | 86796597 |   24 | 1996-09-12 | 2017-09-29 |  37566.123 |     30 | AB positive |
+|  8 | Jack      | jack@gmail.com      | Tester      | 98498033 |   22 | 1996-12-06 | 2018-11-01 |   4500.986 |     40 | O positive  |
+| 12 | Ram       | ram@gmail.com       | Developer   |  7799962 |   26 | 1992-08-09 | 2014-12-13 | 55000.9874 |     30 | AB positive |
+| 15 | Kavya     | kavya@gmail.com     | Developer   |  7765332 |   28 | 1991-01-28 | 2013-11-16 |  99000.774 |     20 | O negitive  |
++----+-----------+---------------------+-------------+----------+------+------------+------------+------------+--------+-------------+
+
+17. write a query to display all the details of employee whose salary in the range of 20000 and 50000?
+
+ select * from employee_info where salary between 10000 and 50000;
++----+-----------+---------------------+-------------+----------+------+------------+------------+--------------+--------+-------------+
+| id | name      | email               | designation | mobileNo | age  | DOB        | DOJ        | salary       | DeptID | BloodGroup  |
++----+-----------+---------------------+-------------+----------+------+------------+------------+--------------+--------+-------------+
+|  1 | suchi     | suchi@gmail.com     | developer   | 94925577 |   22 | 1997-01-12 | 2019-08-24 |    28000.123 |     10 | O positive  |
+|  3 | Bhanu     | bhanu@gmail.com     | tester      | 56792897 |   27 | 1995-09-12 | 2015-09-29 |    37906.123 |     30 | B positive  |
+|  4 | Harshitha | harshitha@gmail.com | tester      | 86796597 |   24 | 1996-09-12 | 2017-09-29 |    37566.123 |     30 | AB positive |
+|  5 | Gopala    | gopal@gmail.com     | sales       | 97796597 |   24 | 1995-11-10 | 2016-09-29 |    17566.123 |     20 | A positive  |
+| 10 | Rohith    | rohith@gmail.com    | sales       | 98589032 |   24 | 1994-03-07 | 2016-11-01 |   34367.4566 |     10 | B negitive  |
+| 11 | Anupama   | Anu@gmail.com       | HR          |  9788862 |   25 | 1993-08-08 | 2015-10-12 | 22890.889874 |     10 | A negitive  |
+| 13 | Ravi      | ravi@gmail.com      | sales       |  9675432 |   27 | 1991-10-08 | 2013-10-17 |    23400.774 |     40 | B positive  |
+| 14 | sandhya   | sandhya@gmail.com   | sales       |  8675332 |   27 | 1991-11-09 | 2013-10-17 |    22400.774 |     30 | A positive  |
++----+-----------+---------------------+-------------+----------+------+------------+------------+--------------+--------+-------------+
+8 rows in set (0.00 sec)
+
+18.write a query to display all the details of employee who hired in 2017?
+
+select * from employee_info where DOJ>='2017-01-01' &&  DOJ<='2017-12-31';
++----+-----------+---------------------+-------------+----------+------+------------+------------+-----------+--------+-------------+
+| id | name      | email               | designation | mobileNo | age  | DOB        | DOJ        | salary    | DeptID | BloodGroup  |
++----+-----------+---------------------+-------------+----------+------+------------+------------+-----------+--------+-------------+
+|  4 | Harshitha | harshitha@gmail.com | tester      | 86796597 |   24 | 1996-09-12 | 2017-09-29 | 37566.123 |     30 | AB positive |
+|  9 | Jill      | jill@gmail.com      | Developer   | 88598023 |   23 | 1995-02-07 | 2017-11-01 | 84367.986 |     10 | O negitive  |
++----+-----------+---------------------+-------------+----------+------+------------+------------+-----------+--------+-------------+
+
+
+===============================BETWEEEN====================================
+select * from employee_info where DOJ between '2017-01-01'  and '2017-12-31';
++----+-----------+---------------------+-------------+----------+------+------------+------------+-----------+--------+-------------+
+| id | name      | email               | designation | mobileNo | age  | DOB        | DOJ        | salary    | DeptID | BloodGroup  |
++----+-----------+---------------------+-------------+----------+------+------------+------------+-----------+--------+-------------+
+|  4 | Harshitha | harshitha@gmail.com | tester      | 86796597 |   24 | 1996-09-12 | 2017-09-29 | 37566.123 |     30 | AB positive |
+|  9 | Jill      | jill@gmail.com      | Developer   | 88598023 |   23 | 1995-02-07 | 2017-11-01 | 84367.986 |     10 | O negitive  |
++----+-----------+---------------------+-------------+----------+------+------------+------------+-----------+--------+-------------+
+
+
+19 write a query to display all the details of employee excluding employee records DOJ 2019? 
+
+select * from employee_info where DOJ not between '2019-01-01' and '2019-12-31';
++----+-----------+---------------------+-------------+----------+------+------------+------------+--------------+--------+-------------+
+| id | name      | email               | designation | mobileNo | age  | DOB        | DOJ        | salary       | DeptID | BloodGroup  |
++----+-----------+---------------------+-------------+----------+------+------------+------------+--------------+--------+-------------+
+|  3 | Bhanu     | bhanu@gmail.com     | tester      | 56792897 |   27 | 1995-09-12 | 2015-09-29 |    37906.123 |     30 | B positive  |
+|  4 | Harshitha | harshitha@gmail.com | tester      | 86796597 |   24 | 1996-09-12 | 2017-09-29 |    37566.123 |     30 | AB positive |
+|  5 | Gopala    | gopal@gmail.com     | sales       | 97796597 |   24 | 1995-11-10 | 2016-09-29 |    17566.123 |     20 | A positive  |
+|  6 | jon       | jon@gmail.com       | sales       | 77965097 |   28 | 1990-03-10 | 2015-12-01 |    89966.123 |     20 | O positive  |
+|  7 | Raj       | raji@gmail.com      | HR          | 97855097 |   24 | 1994-11-30 | 2015-12-01 |    60066.123 |     40 | B positive  |
+|  8 | Jack      | jack@gmail.com      | Tester      | 98498033 |   22 | 1996-12-06 | 2018-11-01 |     4500.986 |     40 | O positive  |
+|  9 | Jill      | jill@gmail.com      | Developer   | 88598023 |   23 | 1995-02-07 | 2017-11-01 |    84367.986 |     10 | O negitive  |
+| 10 | Rohith    | rohith@gmail.com    | sales       | 98589032 |   24 | 1994-03-07 | 2016-11-01 |   34367.4566 |     10 | B negitive  |
+| 11 | Anupama   | Anu@gmail.com       | HR          |  9788862 |   25 | 1993-08-08 | 2015-10-12 | 22890.889874 |     10 | A negitive  |
+| 12 | Ram       | ram@gmail.com       | Developer   |  7799962 |   26 | 1992-08-09 | 2014-12-13 |   55000.9874 |     30 | AB positive |
+| 13 | Ravi      | ravi@gmail.com      | sales       |  9675432 |   27 | 1991-10-08 | 2013-10-17 |    23400.774 |     40 | B positive  |
+| 14 | sandhya   | sandhya@gmail.com   | sales       |  8675332 |   27 | 1991-11-09 | 2013-10-17 |    22400.774 |     30 | A positive  |
+| 15 | Kavya     | kavya@gmail.com     | Developer   |  7765332 |   28 | 1991-01-28 | 2013-11-16 |    99000.774 |     20 | O negitive  |
++----+-----------+---------------------+-------------+----------+------+------------+------------+--------------+--------+-------------+
+
+20. write a query employee,name,salary and DEPID of all the employee who is working in deptId 10 or 20
+ exculuding employee whose salary>=15000 and salary<=50000?
+
+
+ select name,salary,DeptID from employee_info where  DeptID in(10,20)  and salary not between 15000 and 50000;
++-------+------------+--------+
+| name  | salary     | DeptID |
++-------+------------+--------+
+| Hema  | 279068.123 |     10 |
+| jon   |  89966.123 |     20 |
+| Jill  |  84367.986 |     10 |
+| Kavya |  99000.774 |     20 |
++-------+------------+--------+
+
+21. wAQ  name,salary if designation is not null?
+
+ select name,salary from employee_info where designation is not null;
++-----------+--------------+
+| name      | salary       |
++-----------+--------------+
+| suchi     |    28000.123 |
+| Hema      |   279068.123 |
+| Bhanu     |    37906.123 |
+| Harshitha |    37566.123 |
+| Gopala    |    17566.123 |
+| jon       |    89966.123 |
+| Raj       |    60066.123 |
+| Jack      |     4500.986 |
+| Jill      |    84367.986 |
+| Rohith    |   34367.4566 |
+| Anupama   | 22890.889874 |
+| Ram       |   55000.9874 |
+| Ravi      |    23400.774 |
+| sandhya   |    22400.774 |
+| Kavya     |    99000.774 |
+| sai       |       455555 |
+| sai       |       455555 |
++-----------+--------------+
+
+22.  wAQ  name,salary if designation is null?
+
+ select name,salary from employee_info where designation is  null;
++-------+--------+
+| name  | salary |
++-------+--------+
+| deepa |   NULL |
++-------+--------+
+
+23.WAQ to display employee details whose name starts with s?
+  select * from employee_info where name like 's%';
++----+---------+-------------------+-------------+----------+------+------------+------------+-----------+--------+------------+
+| id | name    | email             | designation | mobileNo | age  | DOB        | DOJ        | salary    | DeptID | BloodGroup |
++----+---------+-------------------+-------------+----------+------+------------+------------+-----------+--------+------------+
+|  1 | suchi   | suchi@gmail.com   | developer   | 94925577 |   22 | 1997-01-12 | 2019-08-24 | 28000.123 |     10 | O positive |
+| 14 | sandhya | sandhya@gmail.com | sales       |  8675332 |   27 | 1991-11-09 | 2013-10-17 | 22400.774 |     30 | A positive |
+| 16 | sai     | sai@gmail.com     | manager     |  4679056 |   22 | 1996-01-12 | 2019-09-12 |    455555 |     20 | O positive |
+| 17 | sai     | sai@gmail.com     |             |  4679056 |   22 | 1996-01-12 | 2019-09-12 |    455555 |     20 |            |
++----+---------+-------------------+-------------+----------+------+------------+------------+-----------+--------+------------+
+
+24.WAQ to display all the details of an employee whose name consists of only 5 characters?
+
+select * from employee_info where name like '_____';(-------->5 underscores)
++----+-------+-----------------+-------------+----------+------+------------+------------+-----------+--------+------------+
+| id | name  | email           | designation | mobileNo | age  | DOB        | DOJ        | salary    | DeptID | BloodGroup |
++----+-------+-----------------+-------------+----------+------+------------+------------+-----------+--------+------------+
+|  1 | suchi | suchi@gmail.com | developer   | 94925577 |   22 | 1997-01-12 | 2019-08-24 | 28000.123 |     10 | O positive |
+|  3 | Bhanu | bhanu@gmail.com | tester      | 56792897 |   27 | 1995-09-12 | 2015-09-29 | 37906.123 |     30 | B positive |
+| 15 | Kavya | kavya@gmail.com | Developer   |  7765332 |   28 | 1991-01-28 | 2013-11-16 | 99000.774 |     20 | O negitive |
+| 18 | deepa | NULL            | NULL        |     NULL |   32 | 1990-01-12 | NULL       |      NULL |   NULL | NULL       |
++----+-------+-----------------+-------------+----------+------+------------+------------+-----------+--------+------------+
+4 rows in set (0.00 sec)
+
+
+25.WAQ  display name, DOB,DOJ,salary whose name starts with s and end with i?
+
+ select name,salary,DOB,DOJ,age from employee_info where name like 's%i';
++-------+-----------+------------+------------+------+
+| name  | salary    | DOB        | DOJ        | age  |
++-------+-----------+------------+------------+------+
+| suchi | 28000.123 | 1997-01-12 | 2019-08-24 |   22 |
+| sai   |    455555 | 1996-01-12 | 2019-09-12 |   22 |
+| sai   |    455555 | 1996-01-12 | 2019-09-12 |   22 |
++-------+-----------+------------+------------+------+
+
+26.WAQ to display all the records of an employe whose second character is a?
+
+ select * from employee_info where name like '_i%';
++----+------+----------------+-------------+----------+------+------------+------------+-----------+--------+------------+
+| id | name | email          | designation | mobileNo | age  | DOB        | DOJ        | salary    | DeptID | BloodGroup |
++----+------+----------------+-------------+----------+------+------------+------------+-----------+--------+------------+
+|  9 | Jill | jill@gmail.com | Developer   | 88598023 |   23 | 1995-02-07 | 2017-11-01 | 84367.986 |     10 | O negitive |
++----+------+----------------+-------------+----------+------+------------+------------+-----------+--------+------------+
+1 row in set (0.00 sec)
+
+27.WAQ to display all information of employee where designation have atleast two e's ?
+ select * from employee_info where designation like '%e%e%';
++----+-----------+---------------------+-------------+----------+------+------------+------------+------------+--------+-------------+
+| id | name      | email               | designation | mobileNo | age  | DOB        | DOJ        | salary     | DeptID | BloodGroup  |
++----+-----------+---------------------+-------------+----------+------+------------+------------+------------+--------+-------------+
+|  1 | suchi     | suchi@gmail.com     | developer   | 94925577 |   22 | 1997-01-12 | 2019-08-24 |  28000.123 |     10 | O positive  |
+|  3 | Bhanu     | bhanu@gmail.com     | tester      | 56792897 |   27 | 1995-09-12 | 2015-09-29 |  37906.123 |     30 | B positive  |
+|  4 | Harshitha | harshitha@gmail.com | tester      | 86796597 |   24 | 1996-09-12 | 2017-09-29 |  37566.123 |     30 | AB positive |
+|  8 | Jack      | jack@gmail.com      | Tester      | 98498033 |   22 | 1996-12-06 | 2018-11-01 |   4500.986 |     40 | O positive  |
+|  9 | Jill      | jill@gmail.com      | Developer   | 88598023 |   23 | 1995-02-07 | 2017-11-01 |  84367.986 |     10 | O negitive  |
+| 12 | Ram       | ram@gmail.com       | Developer   |  7799962 |   26 | 1992-08-09 | 2014-12-13 | 55000.9874 |     30 | AB positive |
+| 15 | Kavya     | kavya@gmail.com     | Developer   |  7765332 |   28 | 1991-01-28 | 2013-11-16 |  99000.774 |     20 | O negitive  |
++----+-----------+---------------------+-------------+----------+------+------------+------------+------------+--------+-------------+
+
+
+28. WAQ to select all the strings of length 5 name starts with s and second last character should be h?
+
+ select * from employee_info where name like 's%h_';
++----+-------+-----------------+-------------+----------+------+------------+------------+-----------+--------+------------+
+| id | name  | email           | designation | mobileNo | age  | DOB        | DOJ        | salary    | DeptID | BloodGroup |
++----+-------+-----------------+-------------+----------+------+------------+------------+-----------+--------+------------+
+|  1 | suchi | suchi@gmail.com | developer   | 94925577 |   22 | 1997-01-12 | 2019-08-24 | 28000.123 |     10 | O positive |
++----+-------+-----------------+-------------+----------+------+------------+------------+-----------+--------+------------+
+1 row in set (0.00 sec)
+ =================================underscore======================
+mysql> select * from employee_info where name like 's__h_';
++----+-------+-----------------+-------------+----------+------+------------+------------+-----------+--------+------------+
+| id | name  | email           | designation | mobileNo | age  | DOB        | DOJ        | salary    | DeptID | BloodGroup |
++----+-------+-----------------+-------------+----------+------+------------+------------+-----------+--------+------------+
+|  1 | suchi | suchi@gmail.com | developer   | 94925577 |   22 | 1997-01-12 | 2019-08-24 | 28000.123 |     10 | O positive |
++----+-------+-----------------+-------------+----------+------+------------+------------+-----------+--------+------------+
+1 row in set (0.00 sec)
+
+
+29. WAQ to display if a name of employee starts with R character or with k?
+
+select * from employee_info where name like 'r%' or name like 'k%';
++----+--------+------------------+-------------+----------+------+------------+------------+------------+--------+-------------+
+| id | name   | email            | designation | mobileNo | age  | DOB        | DOJ        | salary     | DeptID | BloodGroup  |
++----+--------+------------------+-------------+----------+------+------------+------------+------------+--------+-------------+
+|  7 | Raj    | raji@gmail.com   | HR          | 97855097 |   24 | 1994-11-30 | 2015-12-01 |  60066.123 |     40 | B positive  |
+| 10 | Rohith | rohith@gmail.com | sales       | 98589032 |   24 | 1994-03-07 | 2016-11-01 | 34367.4566 |     10 | B negitive  |
+| 12 | Ram    | ram@gmail.com    | Developer   |  7799962 |   26 | 1992-08-09 | 2014-12-13 | 55000.9874 |     30 | AB positive |
+| 13 | Ravi   | ravi@gmail.com   | sales       |  9675432 |   27 | 1991-10-08 | 2013-10-17 |  23400.774 |     40 | B positive  |
+| 15 | Kavya  | kavya@gmail.com  | Developer   |  7765332 |   28 | 1991-01-28 | 2013-11-16 |  99000.774 |     20 | O negitive  |
++----+--------+------------------+-------------+----------+------+------------+------------+------------+--------+-------------+
+
+30.WAQ to display all the records of an employee whose name the 3rd charcter should be c and 5th charcter should be ? 
+
+from employee_info where name like '__c_i';
++----+-------+-----------------+-------------+----------+------+------------+------------+-----------+--------+------------+
+| id | name  | email           | designation | mobileNo | age  | DOB        | DOJ        | salary    | DeptID | BloodGroup |
++----+-------+-----------------+-------------+----------+------+------------+------------+-----------+--------+------------+
+|  1 | suchi | suchi@gmail.com | developer   | 94925577 |   22 | 1997-01-12 | 2019-08-24 | 28000.123 |     10 | O positive |
++----+-------+-----------------+-------------+----------+------+------------+------------+-----------+--------+------------+
+1 row in set (0.00 sec)
+
+
+31.WAQ to display employee details excluding whose name starts with r?
+
+select * from employee_info where name not like 'r%';
++----+-----------+---------------------+-------------+----------+------+------------+------------+--------------+--------+-------------+
+| id | name      | email               | designation | mobileNo | age  | DOB        | DOJ        | salary       | DeptID | BloodGroup  |
++----+-----------+---------------------+-------------+----------+------+------------+------------+--------------+--------+-------------+
+|  1 | suchi     | suchi@gmail.com     | developer   | 94925577 |   22 | 1997-01-12 | 2019-08-24 |    28000.123 |     10 | O positive  |
+|  2 | Hema      | hema@gmail.com      | HR          |  9492897 |   22 | 1998-09-12 | 2019-09-29 |   279068.123 |     10 | O positive  |
+|  3 | Bhanu     | bhanu@gmail.com     | tester      | 56792897 |   27 | 1995-09-12 | 2015-09-29 |    37906.123 |     30 | B positive  |
+|  4 | Harshitha | harshitha@gmail.com | tester      | 86796597 |   24 | 1996-09-12 | 2017-09-29 |    37566.123 |     30 | AB positive |
+|  5 | Gopala    | gopal@gmail.com     | sales       | 97796597 |   24 | 1995-11-10 | 2016-09-29 |    17566.123 |     20 | A positive  |
+|  6 | jon       | jon@gmail.com       | sales       | 77965097 |   28 | 1990-03-10 | 2015-12-01 |    89966.123 |     20 | O positive  |
+|  8 | Jack      | jack@gmail.com      | Tester      | 98498033 |   22 | 1996-12-06 | 2018-11-01 |     4500.986 |     40 | O positive  |
+|  9 | Jill      | jill@gmail.com      | Developer   | 88598023 |   23 | 1995-02-07 | 2017-11-01 |    84367.986 |     10 | O negitive  |
+| 11 | Anupama   | Anu@gmail.com       | HR          |  9788862 |   25 | 1993-08-08 | 2015-10-12 | 22890.889874 |     10 | A negitive  |
+| 14 | sandhya   | sandhya@gmail.com   | sales       |  8675332 |   27 | 1991-11-09 | 2013-10-17 |    22400.774 |     30 | A positive  |
+| 15 | Kavya     | kavya@gmail.com     | Developer   |  7765332 |   28 | 1991-01-28 | 2013-11-16 |    99000.774 |     20 | O negitive  |
+| 16 | sai       | sai@gmail.com       | manager     |  4679056 |   22 | 1996-01-12 | 2019-09-12 |       455555 |     20 | O positive  |
+| 17 | sai       | sai@gmail.com       |             |  4679056 |   22 | 1996-01-12 | 2019-09-12 |       455555 |     20 |             |
+| 18 | deepa     | NULL                | NULL        |     NULL |   32 | 1990-01-12 | NULL       |         NULL |   NULL | NULL        |
++----+-----------+---------------------+-------------+----------+------+------------+------------+--------------+--------+-------------+
+
+
+32.WAQ to display average salary of employees from employee_info?
+select avg(salary) from employee_info;
++--------------------+
+| avg(salary)        |
++--------------------+
+| 106304.67581611765 |
++--------------------+
+
+33. WAQ to display min salary max salary sum of all salary ?
+
+ select min(salary),avg(salary),sum(salary) from employee_info;
++-------------+--------------------+----------------+
+| min(salary) | avg(salary)        | sum(salary)    |
++-------------+--------------------+----------------+
+|    4500.986 | 106304.67581611765 | 1807179.488874 |
++-------------+--------------------+----------------+
+1 row in set (0.09 sec)
+ 
+34. WAQ to count salary?
+ select count(salary) from employee_info;
++---------------+
+| count(salary) |
++---------------+
+|            17 |
++---------------+
+1 row in set (0.00 sec)
+
+35.WAQ to alias to min(salary),avg(salary),sum(salary),count(salary) ?
+ select min(salary) min,max(salary) max,avg(salary) avg,sum(salary) sum,count(salary) count from employee_info;
++----------+--------+--------------------+----------------+-------+
+| min      | max    | avg                | sum            | count |
++----------+--------+--------------------+----------------+-------+
+| 4500.986 | 455555 | 106304.67581611765 | 1807179.488874 |    17 |
++----------+--------+--------------------+----------------+-------+
+1 row in set (0.00 sec)
+
+
+36.

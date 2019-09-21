@@ -1,0 +1,44 @@
+1.WAQ to display number of employee hv DOJ after 2016?
+
+ select * from employee_info where DOJ>'2016-01-01';
++----+-----------+---------------------+-------------+----------+------+------------+------------+------------+--------+-------------+
+| id | name      | email               | designation | mobileNo | age  | DOB        | DOJ        | salary     | DeptID | BloodGroup  |
++----+-----------+---------------------+-------------+----------+------+------------+------------+------------+--------+-------------+
+|  1 | suchi     | suchi@gmail.com     | developer   | 94925577 |   22 | 1997-01-12 | 2019-08-24 |  28000.123 |     10 | O positive  |
+|  2 | Hema      | hema@gmail.com      | HR          |  9492897 |   22 | 1998-09-12 | 2019-09-29 | 279068.123 |     10 | O positive  |
+|  4 | Harshitha | harshitha@gmail.com | tester      | 86796597 |   24 | 1996-09-12 | 2017-09-29 |  37566.123 |     30 | AB positive |
+|  5 | Gopala    | gopal@gmail.com     | sales       | 97796597 |   24 | 1995-11-10 | 2016-09-29 |  17566.123 |     20 | A positive  |
+|  8 | Jack      | jack@gmail.com      | Tester      | 98498033 |   22 | 1996-12-06 | 2018-11-01 |   4500.986 |     40 | O positive  |
+|  9 | Jill      | jill@gmail.com      | Developer   | 88598023 |   23 | 1995-02-07 | 2017-11-01 |  84367.986 |     10 | O negitive  |
+| 10 | Rohith    | rohith@gmail.com    | sales       | 98589032 |   24 | 1994-03-07 | 2016-11-01 | 34367.4566 |     10 | B negitive  |
+| 16 | sai       | sai@gmail.com       | manager     |  4679056 |   22 | 1996-01-12 | 2019-09-12 |     455555 |     20 | O positive  |
+| 17 | sai       | sai@gmail.com       |             |  4679056 |   22 | 1996-01-12 | 2019-09-12 |     455555 |     20 |             |
++----+-----------+---------------------+-------------+----------+------+------------+------------+------------+--------+-------------+
+9 rows in set (0.50 sec)
+
+
+
+2.WAQ to display avg salary and height salary of deptid 20,30,40 ?
+
+ select avg(salary),max(salary) from employee_info where DeptID in(20,30,40);
++--------------------+-------------+
+| avg(salary)        | max(salary) |
++--------------------+-------------+
+| 113207.07586666667 |      455555 |
++--------------------+-------------+
+
+
+1 row i
+
+
+
+  3.WAQ to display date of first and last employee ADDED?
+
+
+ select min(DOJ),max(DOJ) from employee_info;
++------------+------------+
+| min(DOJ)   | max(DOJ)   |
++------------+------------+
+| 2013-10-17 | 2019-09-29 |
++------------+------------+
+1 row in set (0.00 sec)

@@ -1,0 +1,468 @@
+1.WAQ to display number of employee hv DOJ after 2016?
+  select count(*) from employee_info where DOJ>'2016-12-31';
++----------+
+| count(*) |
++----------+
+|        7 |
++----------+
+
+
+2.WAQ to display avg salary and height salary of deptid 20,30,40 ?
+
+ select avg(salary),max(salary) from employee_info where DeptID in(20,30,40);
++--------------------+-------------+
+| avg(salary)        | max(salary) |
++--------------------+-------------+
+| 113207.07586666667 |      455555 |
++--------------------+-------------+
+1 row i
+
+3.WAQ to display Data of first and last added employee?
+
+ select min(DOJ),max(DOJ) from employee_info;
++------------+------------+
+| min(DOJ)   | max(DOJ)   |
++------------+------------+
+| 2013-10-17 | 2019-09-29 |
++------------+------------+
+1 row in set (0.00 sec)
+
+
+4.Queries for upper and lower cases?
+
+mysql> select upper(name) from employee_info;
++-------------+
+| upper(name) |
++-------------+
+| SUCHI       |
+| HEMA        |
+| BHANU       |
+| HARSHITHA   |
+| GOPALA      |
+| JON         |
+| RAJ         |
+| JACK        |
+| JILL        |
+| ROHITH      |
+| ANUPAMA     |
+| RAM         |
+| RAVI        |
+| SANDHYA     |
+| KAVYA       |
+| SAI         |
+| SAI         |
+| DEEPA       |
++-------------+
+18 rows in set (0.00 sec)
+
+mysql> select lower(name) from employee_info;
++-------------+
+| lower(name) |
++-------------+
+| suchi       |
+| hema        |
+| bhanu       |
+| harshitha   |
+| gopala      |
+| jon         |
+| raj         |
+| jack        |
+| jill        |
+| rohith      |
+| anupama     |
+| ram         |
+| ravi        |
+| sandhya     |
+| kavya       |
+| sai         |
+| sai         |
+| deepa       |
++-------------+
+18 rows in set (0.00 sec)
+
+
+5.WAQ to display the length of name in employee_info?
+ select length(name) from employee_info;
++--------------+
+| length(name) |
++--------------+
+|            5 |
+|            4 |
+|            5 |
+|            9 |
+|            6 |
+|            3 |
+|            3 |
+|            4 |
+|            4 |
+|            6 |
+|            7 |
+|            3 |
+|            4 |
+|            7 |
+|            5 |
+|            3 |
+|            3 |
+|            5 |
++--------------+
+18 rows in set (0.04 sec)
+
+6.WAQ to merge name and salary?
+ select concat(name,salary) from employee_info;
++---------------------+
+| concat(name,salary) |
++---------------------+
+| suchi28000.123      |
+| Hema279068.123      |
+| Bhanu37906.123      |
+| Harshitha37566.123  |
+| Gopala17566.123     |
+| jon89966.123        |
+| Raj60066.123        |
+| Jack4500.986        |
+| Jill84367.986       |
+| Rohith34367.4566    |
+| Anupama22890.889874 |
+| Ram55000.9874       |
+| Ravi23400.774       |
+| sandhya22400.774    |
+| Kavya99000.774      |
+| sai455555           |
+| sai455555           |
+| NULL                |
++---------------------+
+18 rows in set (0.00 sec)
+
+ 
+7.WAQ to reverse the name?
+
+ select  reverse(name) from employee_info;
++---------------+
+| reverse(name) |
++---------------+
+| ihcus         |
+| ameH          |
+| unahB         |
+| ahtihsraH     |
+| alapoG        |
+| noj           |
+| jaR           |
+| kcaJ          |
+| lliJ          |
+| htihoR        |
+| amapunA       |
+| maR           |
+| ivaR          |
+| ayhdnas       |
+| ayvaK         |
+| ias           |
+| ias           |
+| apeed         |
++---------------+
+18 rows in set (0.00 sec)
+
+8.WAQ to display the name of all employy only three character?
+ select substr(name,1,3) from employee_info;
++------------------+
+| substr(name,1,3) |
++------------------+
+| suc              |
+| Hem              |
+| Bha              |
+| Har              |
+| Gop              |
+| jon              |
+| Raj              |
+| Jac              |
+| Jil              |
+| Roh              |
+| Anu              |
+| Ram              |
+| Rav              |
+| san              |
+| Kav              |
+| sai              |
+| sai              |
+| dee              |
++------------------+
+18 rows in set (0.00 sec)
+
+9.WAQ to display all the details of employee whose name begins with consonents?
+  
+ select * from employee_info where  substr(name,1,1) not in('a','e','i','o','u');
++----+-----------+---------------------+-------------+----------+------+------------+------------+------------+--------+-------------+
+| id | name      | email               | designation | mobileNo | age  | DOB        | DOJ        | salary     | DeptID | BloodGroup  |
++----+-----------+---------------------+-------------+----------+------+------------+------------+------------+--------+-------------+
+|  1 | suchi     | suchi@gmail.com     | developer   | 94925577 |   22 | 1997-01-12 | 2019-08-24 |  28000.123 |     10 | O positive  |
+|  2 | Hema      | hema@gmail.com      | HR          |  9492897 |   22 | 1998-09-12 | 2019-09-29 | 279068.123 |     10 | O positive  |
+|  3 | Bhanu     | bhanu@gmail.com     | tester      | 56792897 |   27 | 1995-09-12 | 2015-09-29 |  37906.123 |     30 | B positive  |
+|  4 | Harshitha | harshitha@gmail.com | tester      | 86796597 |   24 | 1996-09-12 | 2017-09-29 |  37566.123 |     30 | AB positive |
+|  5 | Gopala    | gopal@gmail.com     | sales       | 97796597 |   24 | 1995-11-10 | 2016-09-29 |  17566.123 |     20 | A positive  |
+|  6 | jon       | jon@gmail.com       | sales       | 77965097 |   28 | 1990-03-10 | 2015-12-01 |  89966.123 |     20 | O positive  |
+|  7 | Raj       | raji@gmail.com      | HR          | 97855097 |   24 | 1994-11-30 | 2015-12-01 |  60066.123 |     40 | B positive  |
+|  8 | Jack      | jack@gmail.com      | Tester      | 98498033 |   22 | 1996-12-06 | 2018-11-01 |   4500.986 |     40 | O positive  |
+|  9 | Jill      | jill@gmail.com      | Developer   | 88598023 |   23 | 1995-02-07 | 2017-11-01 |  84367.986 |     10 | O negitive  |
+| 10 | Rohith    | rohith@gmail.com    | sales       | 98589032 |   24 | 1994-03-07 | 2016-11-01 | 34367.4566 |     10 | B negitive  |
+| 12 | Ram       | ram@gmail.com       | Developer   |  7799962 |   26 | 1992-08-09 | 2014-12-13 | 55000.9874 |     30 | AB positive |
+| 13 | Ravi      | ravi@gmail.com      | sales       |  9675432 |   27 | 1991-10-08 | 2013-10-17 |  23400.774 |     40 | B positive  |
+| 14 | sandhya   | sandhya@gmail.com   | sales       |  8675332 |   27 | 1991-11-09 | 2013-10-17 |  22400.774 |     30 | A positive  |
+| 15 | Kavya     | kavya@gmail.com     | Developer   |  7765332 |   28 | 1991-01-28 | 2013-11-16 |  99000.774 |     20 | O negitive  |
+| 16 | sai       | sai@gmail.com       | manager     |  4679056 |   22 | 1996-01-12 | 2019-09-12 |     455555 |     20 | O positive  |
+| 17 | sai       | sai@gmail.com       |             |  4679056 |   22 | 1996-01-12 | 2019-09-12 |     455555 |     20 |             |
+| 18 | deepa     | NULL                | NULL        |     NULL |   32 | 1990-01-12 | NULL       |       NULL |   NULL | NULL        |
++----+-----------+---------------------+-------------+----------+------+------------+------------+------------+--------+-------------+
+17 rows in set (0.00 sec)
+
+
+10.WAQ to search the position of 'a' in the name column?
+
+ select instr(name,'a') from employee_info;
++-----------------+
+| instr(name,'a') |
++-----------------+
+|               0 |
+|               4 |
+|               3 |
+|               2 |
+|               4 |
+|               0 |
+|               2 |
+|               2 |
+|               0 |
+|               0 |
+|               1 |
+|               2 |
+|               2 |
+|               2 |
+|               2 |
+|               2 |
+|               2 |
+|               5 |
++-----------------+
+18 rows in set (0.00 sec)
+
+11.WAQ to replace where 'a' is present with 'z'?
+ select replace(name,'a','z') from employee_info;
++-----------------------+
+| replace(name,'a','z') |
++-----------------------+
+| suchi                 |
+| Hemz                  |
+| Bhznu                 |
+| Hzrshithz             |
+| Gopzlz                |
+| jon                   |
+| Rzj                   |
+| Jzck                  |
+| Jill                  |
+| Rohith                |
+| Anupzmz               |
+| Rzm                   |
+| Rzvi                  |
+| szndhyz               |
+| Kzvyz                 |
+| szi                   |
+| szi                   |
+| deepz                 |
++-----------------------+
+18 rows in set (0.00 sec)
+
+12.WAQ to display number of employee who is working in deptid 20 and salary=15000?
+
+select count(*) from employee_info where DeptId and salary=15000;
++----------+
+| count(*) |
++----------+
+|        0 |
++----------+
+1 row in set (0.00 sec)
+
+
+13.WAQ to display heighest salary in each dept?
+ select max(salary),DeptID from employee_info group by DeptID;
++-------------+--------+
+| max(salary) | DeptID |
++-------------+--------+
+|        NULL |   NULL |
+|  279068.123 |     10 |
+|      455555 |     20 |
+|  55000.9874 |     30 |
+|   60066.123 |     40 |
++-------------+--------+
+5 rows in set (0.01 sec)
+
+14.WAQ to display no of developers in each dept?
+select count(*),DeptID from employee_info where designation='developer' group by DeptID;
++----------+--------+
+| count(*) | DeptID |
++----------+--------+
+|        2 |     10 |
+|        1 |     20 |
+|        1 |     30 |
++----------+--------+
+3 rows in set (0.00 sec)
+
+15.WAQ  to display no of employee hired on each date?
+select count(*), DOJ from employee_info  group by DOJ;
++----------+------------+
+| count(*) | DOJ        |
++----------+------------+
+|        1 | NULL       |
+|        2 | 2013-10-17 |
+|        1 | 2013-11-16 |
+|        1 | 2014-12-13 |
+|        1 | 2015-09-29 |
+|        1 | 2015-10-12 |
+|        2 | 2015-12-01 |
+|        1 | 2016-09-29 |
+|        1 | 2016-11-01 |
+|        1 | 2017-09-29 |
+|        1 | 2017-11-01 |
+|        1 | 2018-11-01 |
+|        1 | 2019-08-24 |
+|        2 | 2019-09-12 |
+|        1 | 2019-09-29 |
++----------+------------+
+15 rows in set (0.00 sec)
+
+
+16.WAQ to display min salary in each designation?
+
+ select min(salary),designation from employee_info group by designation;
++--------------+-------------+
+| min(salary)  | designation |
++--------------+-------------+
+|         NULL | NULL        |
+|       455555 |             |
+|    28000.123 | developer   |
+| 22890.889874 | HR          |
+|       455555 | manager     |
+|    17566.123 | sales       |
+|     4500.986 | tester      |
++--------------+-------------+
+7 rows in set (0.00 sec)
+
+
+17.WAQ to display DeptID which has atleast 4 working employees?
+ select count(*)>4,DeptId from employee_info group by DeptID;
++------------+--------+
+| count(*)>4 | DeptId |
++------------+--------+
+|          0 |   NULL |
+|          1 |     10 |
+|          1 |     20 |
+|          0 |     30 |
+|          0 |     40 |
++------------+--------+
+5 rows in set (0.00 sec)
+
+18.WAQ to display the deptId which has total salary >20000?
+ select sum(salary), DeptID from employee_info group by DeptID  having sum(salary)>20000;
++--------------------+--------+
+| sum(salary)        | DeptID |
++--------------------+--------+
+| 448694.57847400004 |     10 |
+|         1117643.02 |     20 |
+|        152874.0074 |     30 |
+|          87967.883 |     40 |
++--------------------+--------+
+4 rows in set (0.00 sec)
+
+
+19. WAQ to display deptID and avg salary of all dept's 
+whose average salary>20000 excluding the employee whose name begins with s?
+
+ select avg(salary), DeptID,name from employee_info where name not like 's%' group by DeptID having avg(salary)>20000;
++--------------------+--------+--------+
+| avg(salary)        | DeptID | name   |
++--------------------+--------+--------+
+|     105173.6138685 |     10 | Hema   |
+|  68844.34000000001 |     20 | Gopala |
+|         43491.0778 |     30 | Bhanu  |
+| 29322.627666666667 |     40 | Raj    |
++--------------------+--------+--------+
+
+20.WAQ to display all the details where salary should be displayed in descending order?
+
+ select * from employee_info order by salary desc;
++----+-----------+---------------------+-------------+----------+------+------------+------------+--------------+--------+-------------+
+| id | name      | email               | designation | mobileNo | age  | DOB        | DOJ        | salary       | DeptID | BloodGroup  |
++----+-----------+---------------------+-------------+----------+------+------------+------------+--------------+--------+-------------+
+| 16 | sai       | sai@gmail.com       | manager     |  4679056 |   22 | 1996-01-12 | 2019-09-12 |       455555 |     20 | O positive  |
+| 17 | sai       | sai@gmail.com       |             |  4679056 |   22 | 1996-01-12 | 2019-09-12 |       455555 |     20 |             |
+|  2 | Hema      | hema@gmail.com      | HR          |  9492897 |   22 | 1998-09-12 | 2019-09-29 |   279068.123 |     10 | O positive  |
+| 15 | Kavya     | kavya@gmail.com     | Developer   |  7765332 |   28 | 1991-01-28 | 2013-11-16 |    99000.774 |     20 | O negitive  |
+|  6 | jon       | jon@gmail.com       | sales       | 77965097 |   28 | 1990-03-10 | 2015-12-01 |    89966.123 |     20 | O positive  |
+|  9 | Jill      | jill@gmail.com      | Developer   | 88598023 |   23 | 1995-02-07 | 2017-11-01 |    84367.986 |     10 | O negitive  |
+|  7 | Raj       | raji@gmail.com      | HR          | 97855097 |   24 | 1994-11-30 | 2015-12-01 |    60066.123 |     40 | B positive  |
+| 12 | Ram       | ram@gmail.com       | Developer   |  7799962 |   26 | 1992-08-09 | 2014-12-13 |   55000.9874 |     30 | AB positive |
+|  3 | Bhanu     | bhanu@gmail.com     | tester      | 56792897 |   27 | 1995-09-12 | 2015-09-29 |    37906.123 |     30 | B positive  |
+|  4 | Harshitha | harshitha@gmail.com | tester      | 86796597 |   24 | 1996-09-12 | 2017-09-29 |    37566.123 |     30 | AB positive |
+| 10 | Rohith    | rohith@gmail.com    | sales       | 98589032 |   24 | 1994-03-07 | 2016-11-01 |   34367.4566 |     10 | B negitive  |
+|  1 | suchi     | suchi@gmail.com     | developer   | 94925577 |   22 | 1997-01-12 | 2019-08-24 |    28000.123 |     10 | O positive  |
+| 13 | Ravi      | ravi@gmail.com      | sales       |  9675432 |   27 | 1991-10-08 | 2013-10-17 |    23400.774 |     40 | B positive  |
+| 11 | Anupama   | Anu@gmail.com       | HR          |  9788862 |   25 | 1993-08-08 | 2015-10-12 | 22890.889874 |     10 | A negitive  |
+| 14 | sandhya   | sandhya@gmail.com   | sales       |  8675332 |   27 | 1991-11-09 | 2013-10-17 |    22400.774 |     30 | A positive  |
+|  5 | Gopala    | gopal@gmail.com     | sales       | 97796597 |   24 | 1995-11-10 | 2016-09-29 |    17566.123 |     20 | A positive  |
+|  8 | Jack      | jack@gmail.com      | Tester      | 98498033 |   22 | 1996-12-06 | 2018-11-01 |     4500.986 |     40 | O positive  |
+| 18 | deepa     | NULL                | NULL        |     NULL |   32 | 1990-01-12 | NULL       |         NULL |   NULL | NULL        |
++----+-----------+---------------------+-------------+----------+------+------------+------------+--------------+--------+-------------+
+18 rows in set (0.00 sec)
+
+21. WAQ to display employee name,designatipn,deptid who are working in either one of the 
+departments 10,20,50,60 sort the records in descending order?
+
+ select name,designation,DeptId,salary from employee_info  where DeptID in (10,20,50,60) order by salary desc;
++---------+-------------+--------+--------------+
+| name    | designation | DeptId | salary       |
++---------+-------------+--------+--------------+
+| sai     | manager     |     20 |       455555 |
+| sai     |             |     20 |       455555 |
+| Hema    | HR          |     10 |   279068.123 |
+| Kavya   | Developer   |     20 |    99000.774 |
+| jon     | sales       |     20 |    89966.123 |
+| Jill    | Developer   |     10 |    84367.986 |
+| Rohith  | sales       |     10 |   34367.4566 |
+| suchi   | developer   |     10 |    28000.123 |
+| Anupama | HR          |     10 | 22890.889874 |
+| Gopala  | sales       |     20 |    17566.123 |
++---------+-------------+--------+--------------+
+10 rows in set (0.00 sec)
+
+22.WAQ to display deptID along with no of employee in it?
+ select count(*),DeptID from employee_info group by DeptID;
++----------+--------+
+| count(*) | DeptID |
++----------+--------+
+|        1 |   NULL |
+|        5 |     10 |
+|        5 |     20 |
+|        4 |     30 |
+|        3 |     40 |
++----------+--------+
+5 rows in set (0.01 sec)
+
+23.WAQ to display all the details of tester and developer?
+
+select * from employee_info where designation= 'tester' or designation='developer'; 
+
+24.WAQ to display name of the employee who is working for pune dept?
+
+select name from deptdetails where id=(select id from deptdetails where location='pune');
+hema
+
+25. WAQ to display the name of employee who is working in location which has atleast 
+one 'a' chareter in his name? 
+
+
+
+26.WAQ to obtain 2nd max salary from the depat table?
+
+select max(salary) from deptdetails where salary<(select max(salary) from deptdetails);
+
+27.WAQ to display the third max salary?
+
+select max(salary) from deptdetails where salary<(select max(salary) from deptdetails where salary<(select max(salary) from deptdetails));
+
+
+28.WAQ to display all the records using cross joins/carticen joins?

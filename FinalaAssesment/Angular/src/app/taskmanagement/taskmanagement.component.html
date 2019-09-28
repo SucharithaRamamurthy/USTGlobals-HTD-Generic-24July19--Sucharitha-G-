@@ -1,0 +1,18 @@
+
+
+<form class="col-md-4 offset-md-4 card card-body mt-5 " style="background-color: aqua" > 
+      
+  <div class="form-group">
+    <label for="taskname">TASK</label>
+    <input type="text"  #taskname="ngModel"  ngModel name="taskname" id="taskname" 
+            class="form-control" minlength="5"  >
+            <div class="alert alert-danger" *ngIf="taskname.touched && taskname.valid">
+              <p>This field required</p>
+            </div> 
+              <div *ngIf="taskname.errors.minlength">min length is 5</div>
+            
+           </div>  
+  <div >
+  <button type="submit" class="btn btn-primary">Submit</button>
+</div>
+</form>

@@ -23,9 +23,12 @@ public class Contactent {
 			ContactMeth.contacts();
 		}
 		else if(value==2) {
+                       ContactMeth.search();
+
 			
 		}
 		else {
+                       ContactMeth.operate();
 			
 		}
 	}

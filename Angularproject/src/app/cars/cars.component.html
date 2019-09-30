@@ -1,0 +1,36 @@
+<div class="continer">
+    <div class="col-md-3 mt-4 float-left">
+        <div class="card card-body" *ngFor="let car of cars">
+            <img src="{{car.img}}" class="card-img-top " (click)='sendData(car)'>
+
+        </div>
+    </div>
+    <app-cardetails [carDetails]='carData'></app-cardetails>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="container">
+    <div class="col-md-3 mt-4 float-left">
+        <div class="card card-body " *ngFor= "let car of cars" >
+            <img src="{{car.img}}" alt="" class="card-img-top" (click) = 'sendCar(car)'>
+            <h4 class="card-title">{{car.brand}}</h4>
+        </div>
+    </div>
+
+    <app-cardeateils [carDetails]='carData'></app-cardeateils>
+</div>  -->
+<!-- 
+<div class="continer"> 
+<div class="col-md-6 mt"></div>
+
+</div> -->
